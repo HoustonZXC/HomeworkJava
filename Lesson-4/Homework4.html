@@ -1,0 +1,202 @@
+<meta charset="utf-8">
+<script type ="text/javascript">
+
+// 1
+// условно лежит в файле functions1.js
+function bruh(num) {
+    return {
+        units: num % 10,
+        hundereds: Math.floor(num / 100),
+        tens: Math.floor(num / 10) % 10,
+    };
+}
+
+console.log(bruh(937));
+
+</script>
+
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Число в объект</title>
+</head>
+<body>
+  <!-- для запуска функции -->
+  <script src="functions1.js"></script>
+</body>
+</html>
+
+
+
+<meta charset="utf-8">
+<script type ="text/javascript">
+
+// 1.1
+
+</script>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+	<!-- функции -->
+    <script>
+        'use strict';
+
+        function Test(name, price) {
+            this.name = name;
+            this.price = price;
+        }
+
+        Test.prototype.Discount = function () {
+            this.price = this.price - (this.price * 25 / 100);
+        };
+
+        const product = new Test('test123', 321);
+        product.Discount();
+
+        console.log(product);
+
+    </script>
+
+     <!-- классы -->
+    <script>
+    class Test1 {
+           constructor(name, price) {
+               this.name = name;
+               this.price = price;
+           }
+
+           Discount() {
+               this.price = this.price - (this.price * 25 / 100);
+           }
+       }
+
+       const product1 = new Test1('test321', 123);
+       product1.Discount();
+
+       console.log(product1);
+</body>
+
+</html>
+
+<meta charset="utf-8">
+<script type ="text/javascript">
+
+	// 1.2
+
+</script>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+	<!-- функции -->
+    <script>
+        'use strict';
+
+        function Test2(author, text, date) {
+            this.author = author;
+            this.text = text;
+            this.date = date;
+        }
+
+        Test2.prototype.edit = function(text) {
+            this.text = text;
+        }
+
+        const post = new Test2('Obe', 'One', new Date());
+        console.log(post);
+        post.edit('Kenobi');
+        console.log(post);
+
+
+        function Attached(author, text, date) {
+            Test2.call(this, author, text, date);
+            this.highlighted = false;
+        }
+
+        Attached.prototype = Object.create(Test2.prototype);
+        Attached.prototype.constructor = Attached;
+
+        Attached.prototype.Highlighted = function() {
+            this.highlighted = true;
+        }
+
+        const attached786 = new Attached('Hello', 'There', new Date());
+        console.log(attached786);
+        attached786.Highlighted();
+        attached786.edit('bruh');
+        console.log(attached786);
+    </script>
+    
+    <!-- классы-->
+    <script>
+
+            'use strict';
+
+        class Test3 {
+            constructor(author, text, date) {
+                this.author = author;
+                this.text = text;
+                this.date = date;
+            }
+
+            edit(text) {
+                this.text = text;
+            }
+        }
+
+        const post = new Test3('Obe', 'One', new Date());
+        console.log(post);
+        post.edit('Kenobi');
+        console.log(post);
+
+
+        class Attached extends Test3 {
+            constructor(author, text, date) {
+                super(author, text, date);
+                this.highlighted = false;
+            }
+
+            Highlighted() {
+                this.highlighted = true;
+            }
+        }
+
+        const attached786 = new Attached('Hello', 'There', new Date());
+        console.log(attached786);
+        attached786.Highlighted();
+        attached786.edit('bruh');
+        console.log(attached786);
+
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
